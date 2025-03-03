@@ -59,10 +59,9 @@ void setSetting(settingsManager *manager, const char *key, dataType type, value 
 void getSetting(settingsManager *manager, const char *key) {
     for (int i = 0; i < manager->count; i++) {
         if (strcmp(manager->settings[i].key, key) == 0) {
-            printf("%s: ", key);
             switch (manager->settings[i].type) {
                 case TYPE_BOOL:
-                    printf("%s\n", manager->settings[i].value.boolVal ? "true" : "false");
+                    printf("%s\n", manager->settings[i].value.boolVal ? "1" : "0");
                     break;
                 case TYPE_STRING:
                     printf("%s\n", manager->settings[i].value.stringVal);
@@ -82,7 +81,8 @@ void getSetting(settingsManager *manager, const char *key) {
             return;
         }
     }
-    printf("%s not set\n", key);
+    printf("?");
+    //printf("%s not set\n", key);
 }
 
 // Main function
