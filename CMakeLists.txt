@@ -11,12 +11,4 @@ if(CMAKE_C_COMPILER_ID MATCHES "GNU|Clang")
     target_compile_options(SettingsManager PRIVATE -Wall -Wextra -pedantic -Werror)
 endif()
 
-add_custom_target(install-directly
-    COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:SettingsManager> /usr/bin/
-    COMMENT "Copying SettingsManager to /usr/bin..."
-)
-
-add_custom_target(uninstall
-    COMMAND ${CMAKE_COMMAND} -E remove /usr/bin/SettingsManager
-    COMMENT "Removing SettingsManager from /usr/bin..."
-)
+install(TARGETS SettingsManager DESTINATION bin)
